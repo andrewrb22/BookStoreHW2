@@ -7,10 +7,6 @@ public class BookList {
     list[i] = null;
     }
     public void printBooks() {
-    /*for (Book b: list) {
-    if (b != null)
-    System.out.println(b);
-    }*/
     for ( int i = 0; i<SIZE ; i++)
     if ( list[i] != null)
     System.out.println(list[i]);
