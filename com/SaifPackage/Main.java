@@ -241,7 +241,7 @@ class LibraryBook {
     public String toString(){
         // we return in this pattern
         // [458792132-JAVA MADE EASY by ERICKA JONES, CALL NUMBER: A1]
-        return "[" + isbn + "-" + title + " by " + author + ", CALL NUMBER: " + callNumber + "]";
+        return "[" + isbn + "-" + title + " by " + author + " - " + callNumber + "]";
     }
 }
 
@@ -264,7 +264,7 @@ public class Main {
 
         // we need to keep running the program until the user enters no
         String ans;
-        
+       
         do{
             // ask the user if they want to add a book
             System.out.println("Would you like to create a book object? (yes/no)");
@@ -274,9 +274,27 @@ public class Main {
             // if(ans.equals("yes") || ans.equals("YES") ){
             // continue;
             // }
-            if(ans.equals("no") || ans.equals("NO") ){
+            if(ans.equals("no") || ans.equals("NO")  ){
+                System.out.println("Sure! \n Here are all your books... \n");
+
+                for(int i = 0; i < bookstoreBooksCount; i++){
+                    System.out.println("Bookstore  Books \n" + bookstoreBooks[i].toString() +"\n-------------\n");
+                }
+        
+                // display the library book information
+                // traverse the libraryBooks array and display the information of each book
+                for(int i = 0; i<libraryBooksCount; i++) {
+                    System.out.println("Library Books \n" + libraryBooks[i].toString() +"\n-------------\n" );
+                }
+
+                System.out.println(" \n-------------\n GoodBye!!");
+
                 break;
             }
+            // if( !ans.equals("YES")  || !ans.equals("yes")|| !ans.equals("no") || !ans.equals("NO")){
+            //     System.out.println("\nNot a valid entry, GoodBye");
+            //     break;
+            // }
 
             // if yes we ask the question related to the books
             System.out.println("Please enter the author, title and the isbn of the book separated by / :");
@@ -300,7 +318,7 @@ public class Main {
             String bookType = sc.nextLine();
 
            // keep asking for the book type until the answer is either BB or LB
-            while(!bookType.equals("BB") && !bookType.equals("LB")){
+            while(!bookType.equals("BB") && !bookType.equals("LB") && !bookType.equals("bb") && !bookType.equals("lb")){
                 System.out.println("Oops! That's not a valid entry. Please try again: ");
                 bookType = sc.nextLine();
             }
@@ -308,7 +326,7 @@ public class Main {
             System.out.println("Got it!");
 
             // if the book type is BB we ask for price, sale and discount information
-            if(bookType.equals("BB")){
+            if(bookType.equals("BB") || bookType.equals("bb")){
                 System.out.println("Please enter the list price of " + title + " by " + author + ":") ;
                 double listPrice = sc.nextDouble();
                 sc.nextLine();
@@ -318,7 +336,7 @@ public class Main {
                 // if the answer is yes we ask for the sale price
                 boolean onSale = false;
                 double discount = 0;
-                if(sale.equals("y")){
+                if(sale.equals("y") || sale.equals("Y")){
                     System.out.println("Deduction percentage: ") ;
                     discount = sc.nextDouble();
                     sc.nextLine();
@@ -334,8 +352,8 @@ public class Main {
 
 
                 // display the book information
-                System.out.println("Here is your bookstore book information: ");
-                System.out.println(bookstoreBooks[bookstoreBooksCount].toString());
+                System.out.println("Here is your bookstore book information: \n");
+                System.out.println(bookstoreBooks[bookstoreBooksCount].toString() + "\n");
 
                 // increment the count of the number of books in the bookstoreBooks array
                 bookstoreBooksCount++;
@@ -345,15 +363,15 @@ public class Main {
                 libraryBooks[libraryBooksCount] = new LibraryBook(author, title, isbn);
 
                 // display the library book information
-                System.out.println("Here is your library book information: ");
-                System.out.println(libraryBooks[libraryBooksCount].toString());
+                System.out.println("Here is your library book information: \n");
+                System.out.println(libraryBooks[libraryBooksCount].toString() + "\n");
 
                 // increment the count of the number of books in the libraryBooks array
-                libraryBooksCount++;
+                // libraryBooksCount++;
             }
 
 
-        }while(ans.equals("yes"));
+        }while(ans.equals("yes")|| ans.equals("YES") || ans.equals("yEs"));
 
 
         // display all the book information of the books entered by the user
@@ -361,13 +379,13 @@ public class Main {
         // display the bookstore book information
         // traverse the bookstoreBooks array and display the information of each book
         for(int i = 0; i < bookstoreBooksCount; i++){
-            System.out.println(bookstoreBooks[i].toString());
+            System.out.println("Bookstore  Books \n" + bookstoreBooks[i].toString() +"\n");
         }
 
         // display the library book information
         // traverse the libraryBooks array and display the information of each book
         for(int i = 0; i<libraryBooksCount; i++) {
-            System.out.println(libraryBooks[i].toString());
+            System.out.println("Library Books \n" +libraryBooks[i].toString() +"\n");
         }
 
         sc.close();
