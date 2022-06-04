@@ -32,14 +32,13 @@ class BookstoreBook {
 
     // constructor with 4 parameters where on sale is false and discount is 0
     public BookstoreBook(String author, String title, String isbn, double price) {
-        // call the constructor with 6 parameters with the values false and 0   (onSale, discount)
+   
         this(author, title, isbn, price, false, 0);
     }
 
     // constructor with 3 parameters where only author title and isbn  are passed
     public BookstoreBook(String author, String title, String isbn) {
-        // call the constructor with 4 parameters
-        // set the price to 0 ( price is not set yet)
+
         this(author, title, isbn, 0);
     }
 
@@ -126,7 +125,7 @@ class LibraryBook {
     private String callNumber;
     private static int numOfBooks;
 
-    // a int variable to store the floor number in which the book will be located
+  
     private int floorNumber;
 
     // constructor with 3 parameters
@@ -138,7 +137,6 @@ class LibraryBook {
         // generate the floor number and set the floor number
         floorNumber = (int) (Math.random() * 99 + 1);
 
-        //call the generateCallNumber method to generate the call number and set the returned value to the callNumber
         this.callNumber = generateCallNumber();
         numOfBooks++;
     }
@@ -152,10 +150,7 @@ class LibraryBook {
 
     // constructor with no parameters (default constructor)
     public LibraryBook() {
-        // call the constructor with 3 parameters
-        // we need to set isbn to the string notavailable
-        // we need to set the author to the string notavailable
-        // we need to set the title to the string notavailable
+ 
         this("notavailable", "notavailable", "notavailable");
     }
 
@@ -164,14 +159,7 @@ class LibraryBook {
 
    // function to generate the call number
     private String generateCallNumber() {
-        // we return in this pattern
-        // xx-yyy-c
-        // where xx is the floor number
-        // yyy is the first 3 letters of the author's name
-        // c is the last character of the isbn.
 
-
-        // if floorNumber is less than 10, we add a 0 to the front of the floor number
         if (floorNumber < 10) {
             return "0" + floorNumber + "-" + author.substring(0, 3) + "-" + isbn.charAt(isbn.length() - 1);
         } else {
@@ -317,7 +305,7 @@ public class Main {
             System.out.println("Now, tell me if the book is a bookstore book or a library book (BB/LB) (enter BB for bookstore book and LB for library book)");
             String bookType = sc.nextLine();
 
-           // keep asking for the book type until the answer is either BB or LB
+           // keep asking for the book type until the answer is either BB  or bb or LB or lb
             while(!bookType.equals("BB") && !bookType.equals("LB") && !bookType.equals("bb") && !bookType.equals("lb")){
                 System.out.println("Oops! That's not a valid entry. Please try again: ");
                 bookType = sc.nextLine();
